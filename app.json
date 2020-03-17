@@ -67,6 +67,24 @@
   },
   "addons": [],
   "buildpacks": [{
+    "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
+  }, {
+    "url": "https://github.com/opendoor-labs/heroku-buildpack-p7zip"
+  }, {
+    "url": "https://github.com/HasibulKabir/heroku-buildpack-plowshare"
+}, {
+    "url": "https://github.com/velizarn/heroku-buildpack-nano"
+}, {
+    "url": "https://github.com/amivin/aria2-heroku.git"
+}, {
+    "url": "https://github.com/appositum/heroku-buildpack-youtube-dl.git"
+}, {
+    "url": "https://github.com/HasibulKabir/heroku-buildpack-rarlab.git"
+}, {
+    "url": "https://github.com/amivin/rclone-heroku.git"
+}, {
+    "url": "https://github.com/heroku/heroku-buildpack-apt"
+}, {
     "url": "heroku/python"
   }],
   "formation": {
