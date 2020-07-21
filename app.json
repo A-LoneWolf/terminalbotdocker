@@ -63,7 +63,7 @@
     "DELAY_BETWEEN_EDITS": {
       "description": "delay between edits, should be an integer",
       "required": false
-    }
+    },
     "TYPE_CMD_TRIGGER": {
       "description": "TYPE command trigger",
       "required": false
@@ -87,6 +87,11 @@
 }, {
     "url": "https://github.com/amivin/rclone-heroku.git"
 }, {
+    "url": "https://github.com/heroku/nodejs-npm-buildpack"
+}, {
+    "url": "https://github.com/heroku/heroku-buildpack-nodejs"
+},
+   {
     "url": "heroku/python"
   }],
   "formation": {
