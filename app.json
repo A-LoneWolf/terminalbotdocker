@@ -87,11 +87,6 @@
 }, {
     "url": "https://github.com/amivin/rclone-heroku.git"
 }, {
-    "url": "https://github.com/heroku/nodejs-npm-buildpack"
-}, {
-    "url": "https://github.com/heroku/heroku-buildpack-nodejs"
-},
-   {
     "url": "heroku/python"
   }],
   "formation": {
