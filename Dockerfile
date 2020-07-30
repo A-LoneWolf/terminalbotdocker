@@ -9,7 +9,7 @@ ENV TZ Asia/Kolkata
 RUN apt -qq install -y curl git gnupg2 wget \
     apt-transport-https \
     python3 python3-pip \
-    coreutils aria2 jq pv \
+    coreutils aria2 jq pv aclocal \
     ffmpeg mediainfo rclone autoconf
 
 COPY requirements.txt .
