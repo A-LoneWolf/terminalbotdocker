@@ -1,4 +1,4 @@
-FROM centos:7.2
+FROM library/centos:latest
 
 WORKDIR /app
 
