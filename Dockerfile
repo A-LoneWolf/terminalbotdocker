@@ -11,3 +11,10 @@ RUN apt -qq install -y curl git gnupg2 wget \
     python3 python3-pip \
     coreutils aria2 jq pv \
     ffmpeg mediainfo rclone 
+
+COPY requirements.txt .
+RUN pip3 install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+CMD ["python3", "-m", "termbot"]
