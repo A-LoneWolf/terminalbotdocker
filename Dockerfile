@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM tutum/centos:latest
 
 WORKDIR /app
 
