@@ -14,7 +14,7 @@ RUN apt-get install -y software-properties-common
 RUN apt -qq update
 RUN mkdir AAC
 RUN cd AAC/
-RUN aria2c http://ftp6.nero.com/tools/NeroAACCodec-1.5.1.zip
+RUN curl http://ftp6.nero.com/tools/NeroAACCodec-1.5.1.zip
 RUN unzip -j NeroAACCodec-1.5.1.zip
 RUN sudo install -m 0755 neroAacEnc /usr/bin/
 RUN sudo apt-get install gpac
