@@ -12,6 +12,11 @@ RUN apt -qq install -y curl git gnupg2 wget \
     ffmpeg mediainfo rclone
 RUN apt-get install -y software-properties-common
 
+COPY requirements.txt .
+RUN pip3 install --no-cache-dir -r requirements.txt
+
+COPY . .
+
 FROM python:3-stretch
 ENV PYTHONUNBUFFERED 1
 
@@ -26,9 +31,5 @@ RUN apt-get update && \
     make --directory=build install && \
     rm -rf build
 
-COPY requirements.txt .
-RUN pip3 install --no-cache-dir -r requirements.txt
-
-COPY . .
 
 CMD ["python3", "-m", "termbot"]
