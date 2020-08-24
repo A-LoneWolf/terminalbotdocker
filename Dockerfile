@@ -576,7 +576,7 @@ RUN apt -qq update
 
 ENV TZ Asia/Kolkata
 
-WORKDIR     /tmp/workdir
+WORKDIR     /app
 RUN apt -qq install -y curl git gnupg2 wget \
     apt-transport-https \
     python3 python3-pip \
