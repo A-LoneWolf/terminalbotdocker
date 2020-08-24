@@ -15,7 +15,7 @@ RUN apt-get install -y software-properties-common
 Run apt update
 RUN add-apt-repository ppa:stebbins/handbrake-releases
 RUN apt update
-RUN apt install -y handbrake-gtk handbrake-cli
+RUN apt install -y handbrake handbrake-cli
 RUN apt update
 
 COPY requirements.txt .
