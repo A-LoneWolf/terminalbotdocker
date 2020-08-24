@@ -11,7 +11,7 @@ RUN apt -qq install -y curl git gnupg2 wget \
     python3 python3-pip \
     coreutils aria2 jq pv \
     ffmpeg mediainfo rclone
-RUN apt-get install software-properties-common
+RUN apt-get install -y software-properties-common
 Run apt update
 RUN add-apt-repository ppa:stebbins/handbrake-releases
 RUN apt update
