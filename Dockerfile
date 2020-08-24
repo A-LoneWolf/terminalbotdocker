@@ -202,17 +202,7 @@ RUN \
         make && \
         make install && \
         rm -rf ${DIR}
-### libmp3lame http://lame.sourceforge.net/
-RUN \
-        DIR=/tmp/lame && \
-        mkdir -p ${DIR} && \
-        cd ${DIR} && \
-        curl -sL https://versaweb.dl.sourceforge.net/project/lame/lame/$(echo ${LAME_VERSION} | sed -e 's/[^0-9]*\([0-9]*\)[.]\([0-9]*\)[.]\([0-9]*\)\([0-9A-Za-z-]*\)/\1.\2/')/lame-${LAME_VERSION}.tar.gz | \
-        tar -zx --strip-components=1 && \
-        ./configure --prefix="${PREFIX}" --bindir="${PREFIX}/bin" --enable-shared --enable-nasm --disable-frontend && \
-        make && \
-        make install && \
-        rm -rf ${DIR}
+
 ### xvid https://www.xvid.com/
 RUN \
         DIR=/tmp/xvid && \
@@ -287,30 +277,7 @@ RUN  \
         make -j1 && \
         make install && \
         rm -rf ${DIR}
-## fontconfig https://www.freedesktop.org/wiki/Software/fontconfig/
-RUN  \
-        DIR=/tmp/fontconfig && \
-        mkdir -p ${DIR} && \
-        cd ${DIR} && \
-        curl -sLO https://www.freedesktop.org/software/fontconfig/release/fontconfig-${FONTCONFIG_VERSION}.tar.bz2 && \
-        tar -jx --strip-components=1 -f fontconfig-${FONTCONFIG_VERSION}.tar.bz2 && \
-        ./configure --prefix="${PREFIX}" --disable-static --enable-shared && \
-        make && \
-        make install && \
-        rm -rf ${DIR}
-## libass https://github.com/libass/libass
-RUN  \
-        DIR=/tmp/libass && \
-        mkdir -p ${DIR} && \
-        cd ${DIR} && \
-        curl -sLO https://github.com/libass/libass/archive/${LIBASS_VERSION}.tar.gz && \
-        echo ${LIBASS_SHA256SUM} | sha256sum --check && \
-        tar -zx --strip-components=1 -f ${LIBASS_VERSION}.tar.gz && \
-        ./autogen.sh && \
-        ./configure --prefix="${PREFIX}" --disable-static --enable-shared && \
-        make && \
-        make install && \
-        rm -rf ${DIR}
+
 ## kvazaar https://github.com/ultravideo/kvazaar
 RUN \
         DIR=/tmp/kvazaar && \
@@ -405,31 +372,6 @@ RUN \
         make install && \
         rm -rf ${DIR}
 
-## libxml2 - for libbluray
-RUN \
-        DIR=/tmp/libxml2 && \
-        mkdir -p ${DIR} && \
-        cd ${DIR} && \
-        curl -sLO https://gitlab.gnome.org/GNOME/libxml2/-/archive/v${LIBXML2_VERSION}/libxml2-v${LIBXML2_VERSION}.tar.gz && \
-        echo ${LIBXML2_SHA256SUM} | sha256sum --check && \
-        tar -xz --strip-components=1 -f libxml2-v${LIBXML2_VERSION}.tar.gz && \
-        ./autogen.sh --prefix="${PREFIX}" --with-ftp=no --with-http=no --with-python=no && \
-        make && \
-        make install && \
-        rm -rf ${DIR}
-
-## libbluray - Requires libxml, freetype, and fontconfig
-RUN \
-        DIR=/tmp/libbluray && \
-        mkdir -p ${DIR} && \
-        cd ${DIR} && \
-        curl -sLO https://download.videolan.org/pub/videolan/libbluray/${LIBBLURAY_VERSION}/libbluray-${LIBBLURAY_VERSION}.tar.bz2 && \
-        echo ${LIBBLURAY_SHA256SUM} | sha256sum --check && \
-        tar -jx --strip-components=1 -f libbluray-${LIBBLURAY_VERSION}.tar.bz2 && \
-        ./configure --prefix="${PREFIX}" --disable-examples --disable-bdjava-jar --disable-static --enable-shared && \
-        make && \
-        make install && \
-        rm -rf ${DIR}
 
 ## libzmq https://github.com/zeromq/libzmq/
 RUN \
@@ -458,31 +400,7 @@ RUN \
         make install && \
         rm -rf ${DIR}
 
-## libpng
-RUN \
-        DIR=/tmp/png && \
-        mkdir -p ${DIR} && \
-        cd ${DIR} && \
-        git clone https://git.code.sf.net/p/libpng/code ${DIR} -b v${LIBPNG_VERSION} --depth 1 && \
-        ./autogen.sh && \
-        ./configure --prefix="${PREFIX}" && \
-        make check && \
-        make install && \
-        rm -rf ${DIR}
 
-## libaribb24
-RUN \
-        DIR=/tmp/b24 && \
-        mkdir -p ${DIR} && \
-        cd ${DIR} && \
-        curl -sLO https://github.com/nkoriyama/aribb24/archive/v${LIBARIBB24_VERSION}.tar.gz && \
-        echo ${LIBARIBB24_SHA256SUM} | sha256sum --check && \
-        tar -xz --strip-components=1 -f v${LIBARIBB24_VERSION}.tar.gz && \
-        autoreconf -fiv && \
-        ./configure CFLAGS="-I${PREFIX}/include -fPIC" --prefix="${PREFIX}" && \
-        make && \
-        make install && \
-        rm -rf ${DIR}
 
 ## ffmpeg https://ffmpeg.org/
 RUN  \
@@ -503,11 +421,9 @@ RUN \
         --enable-libopencore-amrnb \
         --enable-libopencore-amrwb \
         --enable-gpl \
-        --enable-libass \
         --enable-fontconfig \
         --enable-libfreetype \
         --enable-libvidstab \
-        --enable-libmp3lame \
         --enable-libopus \
         --enable-libtheora \
         --enable-libvorbis \
@@ -523,7 +439,6 @@ RUN \
         --enable-postproc \
         --enable-small \
         --enable-version3 \
-        --enable-libbluray \
         --enable-libzmq \
         --extra-libs=-ldl \
         --prefix="${PREFIX}" \
@@ -532,7 +447,6 @@ RUN \
         --enable-libaom \
         --extra-libs=-lpthread \
         --enable-libsrt \
-        --enable-libaribb24 \
         --extra-cflags="-I${PREFIX}/include" \
         --extra-ldflags="-L${PREFIX}/lib" && \
         make && \
@@ -572,7 +486,6 @@ COPY --from=build /usr/local /usr/local/
 
 FROM ubuntu:18.04
 
-RUN apt -qq update
 
 ENV TZ Asia/Kolkata
 
@@ -581,8 +494,7 @@ RUN apt -qq install -y curl git gnupg2 wget \
     apt-transport-https \
     python3 python3-pip \
     coreutils aria2 jq pv \
-    mediainfo rclone
-RUN apt-get install -y software-properties-common
+    rclone
 
 COPY requirements.txt .
 RUN pip3 install --no-cache-dir -r requirements.txt
