@@ -15,8 +15,8 @@ RUN apt-get install -y software-properties-common
 Run apt update
 RUN add-apt-repository ppa:stebbins/handbrake-releases
 RUN apt update
-RUN apt install handbrake-gtk handbrake-cli
-
+RUN apt install -y handbrake-gtk handbrake-cli
+RUN apt update
 
 COPY requirements.txt .
 RUN pip3 install --no-cache-dir -r requirements.txt
