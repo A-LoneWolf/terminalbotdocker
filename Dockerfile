@@ -1,5 +1,5 @@
 FROM ubuntu:18.04
-FROM spiderxd/ffmpeg-ubuntu:latest 
+FROM offbytwo/ffmpeg:latest 
 ENV TZ Asia/Kolkata
 RUN pwd
 WORKDIR     /app
