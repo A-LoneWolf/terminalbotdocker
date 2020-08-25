@@ -1,7 +1,7 @@
 FROM ubuntu:18.04
 FROM spiderxd/ffmpeg-ubuntu:latest 
 ENV TZ Asia/Kolkata
-
+RUN pwd
 WORKDIR     /app
 
 COPY requirements.txt .
