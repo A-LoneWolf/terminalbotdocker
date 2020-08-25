@@ -8,6 +8,9 @@ A Telegram Bot based on [Pyrogram](https://github.com/pyrogram/pyrogram)
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
+
+[![Run on Google Cloud](https://deploy.cloud.run/button.svg)](https://deploy.cloud.run)
+
 #### The Legacy Way
 Simply clone the repository and run the main file:
 
