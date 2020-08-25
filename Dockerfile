@@ -1,6 +1,3 @@
-RUN pwd
-RUN ls
-
 FROM offbytwo/ffmpeg:latest 
 ENV TZ Asia/Kolkata
 WORKDIR     /app
