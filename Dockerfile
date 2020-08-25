@@ -1,5 +1,5 @@
-FROM spiderxd/ffmpeg-ubuntu:latest
-FROM ubuntu:18.04 
+FROM ubuntu:18.04
+FROM spiderxd/ffmpeg-ubuntu:latest 
 ENV TZ Asia/Kolkata
 
 WORKDIR     /app
