@@ -1,5 +1,5 @@
 FROM jrottenberg/ffmpeg:3.3
-FROM Ubuntu:18.04 
+FROM ubuntu:18.04 
 ENV TZ Asia/Kolkata
 
 WORKDIR     /app
