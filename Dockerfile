@@ -1,4 +1,11 @@
+RUN pwd
+RUN ls
+
+FROM offbytwo/ffmpeg:latest 
+ENV TZ Asia/Kolkata
+WORKDIR     /app
 FROM ubuntu:18.04
+
 WORKDIR     /app
 RUN apt -qq update
 RUN apt -qq install -y curl git gnupg2 wget \
@@ -15,10 +22,5 @@ RUN pip3 install --no-cache-dir -r requirements.txt
 
 
 COPY . .
-RUN pwd
-RUN ls
 
-FROM offbytwo/ffmpeg:latest 
-ENV TZ Asia/Kolkata
-WORKDIR     /app
 CMD ["python3", "-m", "termbot"]
