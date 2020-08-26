@@ -160,7 +160,7 @@ RUN    ./configure \
 RUN make -j$(nproc)
 RUN make install
 
-FROM ubuntu:bionic
+FROM ubuntu:bionic as xyz
 LABEL maintainer "Cosmin Stejerean <cosmin@offbytwo.com>"
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update -qq && apt-get upgrade -y && \
@@ -187,7 +187,7 @@ ENV TZ Asia/Kolkata
 WORKDIR     /app
 
 FROM ubuntu:18.04
-
+COPY --from xyz 
 WORKDIR     /app
 RUN apt -qq update
 RUN apt -qq install -y curl git gnupg2 wget \
