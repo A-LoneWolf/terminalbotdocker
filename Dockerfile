@@ -2,8 +2,14 @@ FROM offbytwo/ffmpeg:latest as xyz
 
 FROM ubuntu:18.04
 
+RUN mkdir -p /opt/ffmpeg
+WORKDIR /opt/ffmpeg
+COPY --from=xyz /opt/ffmpeg . 
+RUN ln -s /opt/ffmpeg/share/model /usr/local/share/
+RUN ldconfig
+ENV PATH="/opt/ffmpeg/bin:$PATH"
+
 WORKDIR     /app
-COPY --from=xyz /opt/ffmpeg/bin/ffmpeg . 
 RUN apt -qq update
 RUN apt -qq install -y curl git gnupg2 wget \
     apt-transport-https \
