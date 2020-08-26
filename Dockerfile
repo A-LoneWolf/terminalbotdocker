@@ -187,7 +187,7 @@ ENV TZ Asia/Kolkata
 WORKDIR     /app
 
 FROM ubuntu:18.04
-COPY --from xyz 
+COPY --from=xyz /opt/ffmpeg . 
 WORKDIR     /app
 RUN apt -qq update
 RUN apt -qq install -y curl git gnupg2 wget \
