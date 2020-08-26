@@ -16,7 +16,8 @@ RUN apt -qq install -y curl git gnupg2 wget \
     python3 python3-pip \
     coreutils aria2 jq pv \
     mediainfo rclone \
-    libnuma1 libssl1.1 libfreetype6 libvmaf-dev
+    libnuma1 libssl1.1 libfreetype6 libvmaf
+
 
 
 COPY requirements.txt .
