@@ -7,7 +7,7 @@ WORKDIR /usr/local/
 RUN ls /usr/local
 RUN ls /usr/local/bin
 RUN ls /usr/local/lib
-COPY --from=xyz /usr/local/ffmpeg . 
+COPY --from=xyz /usr/local . 
 RUN ln -s /opt/ffmpeg/share/model /usr/local/share/
 RUN ldconfig
 ENV PATH="/opt/ffmpeg/bin:$PATH"
