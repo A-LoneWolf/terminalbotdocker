@@ -1,4 +1,4 @@
-FROM offbytwo/ffmpeg:latest as xyz
+FROM flaneurtv/ffmpeg:latest as xyz
 
 FROM ubuntu:18.04
 
