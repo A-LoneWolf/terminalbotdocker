@@ -4,9 +4,6 @@ FROM ubuntu:18.04
 
 RUN mkdir -p /usr/local
 WORKDIR /usr/local/
-RUN ls /usr/local
-RUN ls /usr/local/bin
-RUN ls /usr/local/lib
 COPY --from=xyz /usr/local . 
 RUN ln -s /opt/ffmpeg/share/model /usr/local/share/
 RUN ldconfig
@@ -19,7 +16,7 @@ RUN apt -qq install -y curl git gnupg2 wget \
     python3 python3-pip \
     coreutils aria2 jq pv \
     mediainfo rclone \
-    libnuma1 libssl1.1 libfreetype6 libvmaf
+    libnuma1 libssl1.1 libfreetype6
 
 
 
