@@ -3,8 +3,8 @@ FROM flaneurtv/ffmpeg:latest as xyz
 FROM ubuntu:18.04
 
 RUN mkdir -p /opt/ffmpeg
-WORKDIR /opt/ffmpeg
-COPY --from=xyz /opt/ffmpeg . 
+WORKDIR /usr/local/ffmpeg
+COPY --from=xyz /usr/local/ffmpeg . 
 RUN ln -s /opt/ffmpeg/share/model /usr/local/share/
 RUN ldconfig
 ENV PATH="/opt/ffmpeg/bin:$PATH"
