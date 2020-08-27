@@ -2,8 +2,9 @@ FROM flaneurtv/ffmpeg:latest as xyz
 
 FROM ubuntu:18.04
 
-RUN mkdir -p /usr/local/ffmpeg
-WORKDIR /usr/local/ffmpeg
+RUN mkdir -p /usr/local
+WORKDIR /usr/local/
+RUN ls /usr/local
 COPY --from=xyz /usr/local/ffmpeg . 
 RUN ln -s /opt/ffmpeg/share/model /usr/local/share/
 RUN ldconfig
