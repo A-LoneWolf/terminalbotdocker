@@ -5,6 +5,8 @@ FROM ubuntu:18.04
 RUN mkdir -p /usr/local
 WORKDIR /usr/local/
 RUN ls /usr/local
+RUN ls /usr/local/bin
+RUN ls /usr/local/lib
 COPY --from=xyz /usr/local/ffmpeg . 
 RUN ln -s /opt/ffmpeg/share/model /usr/local/share/
 RUN ldconfig
