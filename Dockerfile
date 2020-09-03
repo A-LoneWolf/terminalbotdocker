@@ -1,4 +1,4 @@
-FROM flaneurtv/ffmpeg:latest as xyz
+FROM jrottenberg/ffmpeg:latest as xyz
 
 FROM ubuntu:18.04
 
@@ -11,7 +11,7 @@ ENV PATH="/opt/ffmpeg/bin:$PATH"
 
 WORKDIR     /app
 RUN apt -qq update
-RUN apt -qq install -y curl git gnupg2 wget \
+RUN apt -qq install -y curl git gnupg2 wget nodejs\
     apt-transport-https \
     python3 python3-pip \
     coreutils aria2 jq pv \
