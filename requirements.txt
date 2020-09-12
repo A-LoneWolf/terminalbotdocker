@@ -3,3 +3,4 @@ tgcrypto
 wget
 curl
 gdown
+megatools
