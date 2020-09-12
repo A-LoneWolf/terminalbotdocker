@@ -4,3 +4,4 @@ wget
 curl
 gdown
 megatools
+gclone
